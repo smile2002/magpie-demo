@@ -1,0 +1,25 @@
+<magpie xmlns='uri:unionpay:magpie:1.0'>
+    <!-- 定义全局信息
+       name:              业务系统标识（强烈建议唯一，可以复用zdogs为该系统定义好的的简称）
+       heartbeatInterval: 心跳间隔时间，即定期向对方汇报自己还活着。单位：毫秒。-->
+
+    <application name="cpc" heartbeatInterval="60000"/>
+
+    <!-- 定义协议信息
+        codec:              （必填）协议名，RPC方式下 支持的协议为：magpie_rpc（必须与客户端设置的一致）
+        version:            （选填）协议版本号（默认为1.0）
+        serializationType:  （必填）报文体数据的序列化类型，rpc模式下支持的类型有hessian2，kryo，jdk （必须与客户端设置的一致）
+        compressAlgorithm:  （选填）压缩算法，支持类型有：none，snappy，gzip，zlib（必须与客户端设置的一致）
+        ip:                 （服务端必填）绑定的ip地址
+        port:               （服务端必填）绑定的端口
+        maxThreads：          （选填） NettyServer的MemoryAwareThreadPoolExecutor的coreSize （仅支持1.1.9以上版本）
+    -->
+    <!-- 服务端协议 -->
+
+    <protocol id="myProtocol" codec="magpie_rpc" version="1.0" serializationType="hessian2" ip="127.0.0.1" port="5555" />
+
+    <service serviceId="sayHello" protocol="myProtocol"
+              interfaceClass="cn.xiao.svr.rpc.IHelloService"
+              implClass="cn.xiao.svr.rpc.HelloServiceImpl"/>
+
+</magpie>

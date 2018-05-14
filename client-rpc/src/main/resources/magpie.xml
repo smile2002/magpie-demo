@@ -1,0 +1,12 @@
+<magpie xmlns='uri:unionpay:magpie:1.0'>
+
+    <application name="cpc_c" heartbeatInterval="60000"/>
+    <protocol id="client" codec="magpie_rpc" version="1.0"
+               serializationType="hessian2" compressAlgorithm="none"/>
+
+     <reference serviceId="sayHello" urls="127.0.0.1:5555"
+                loadbalanceStrategy="random" failStrategy="failover"
+                retries="2" oneway="false" timeout="10000" weights="100"
+                protocol="client"
+                interfaceClass="cn.xiao.svr.rpc.IHelloService" />
+</magpie>

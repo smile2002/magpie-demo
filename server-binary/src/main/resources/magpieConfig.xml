@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<magpie xmlns="uri:unionpay:magpie:1.0">
+    <application name="QrSVR" heartbeatInterval="60000" />
+    <protocol id="myProtocol" codec="magpie_binary" serializationType="binary" ip="127.0.0.1" port="23456" />
+    <service serviceId="myService1" protocol="myProtocol" />
+    <service serviceId="myService2" protocol="myProtocol" />
+</magpie>

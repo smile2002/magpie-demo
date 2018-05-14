@@ -1,0 +1,12 @@
+<magpie xmlns='uri:unionpay:magpie:1.0'>
+
+    <application name="cpc_c" heartbeatInterval="60000"/>
+
+    <protocol id="client2" codec="magpie_binary" version="1.0"
+              serializationType="binary" compressAlgorithm="none"/>
+
+    <reference serviceId="myService1" urls="127.0.0.1:23456"
+               loadbalanceStrategy="random" failStrategy="failover"
+               retries="2" oneway="false" timeout="10000" weights="100"
+               protocol="client2"/>
+</magpie>
